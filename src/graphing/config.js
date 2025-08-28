@@ -2,11 +2,45 @@ const quadrantSize = 512
 const quadrantGap = 32
 
 const getQuadrants = () => {
-  return JSON.parse(process.env.QUADRANTS || null) || ['Techniques', 'Platforms', 'Tools', 'Languages & Frameworks']
+  return JSON.parse(process.env.QUADRANTS || null) || [
+    {
+      name: 'Tools',
+      description: 'Technologies such as frameworks, libraries, and utilities used to build and operate systems.'
+    },
+    {
+      name: 'Techniques',
+      description: 'Practices, patterns, and methodologies that guide how work is done.'
+    },
+    {
+      name: 'Solutions',
+      description: 'Internally-developed systems and services.'
+    },
+    {
+      name: 'Platforms',
+      description: 'Foundational environments or ecosystems that we build solutions on top of.'
+    }
+  ]
 }
 
 const getRings = () => {
-  return JSON.parse(process.env.RINGS || null) || ['Adopt', 'Trial', 'Assess', 'Hold']
+  return JSON.parse(process.env.RINGS || null) || [
+    {
+      name: 'Adopt',
+      description: 'Items that are mature and recommended for widespread use.'
+    },
+    {
+      name: 'Assess',
+      description: 'Items that are recommended but not mandatory; teams may experiment with them to determine fit and value.'
+    },
+    {
+      name: 'Contain',
+      description: 'Items that are no longer strategic and should not be adopted for new solutions; usage should be limited and phased out.'
+    },
+    {
+      name: 'End-of-Life',
+      description: 'Items no longer supported or approved for use as of a given date; teams should plan for decommissioning or replacement.'
+    }
+  ]
 }
 
 const isBetween = (number, startNumber, endNumber) => {

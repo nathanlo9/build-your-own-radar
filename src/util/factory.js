@@ -40,17 +40,30 @@ const plotRadar = function (title, blips, currentRadarName, alternativeRadars) {
   var ringMap = {}
   var maxRings = 4
 
-  _.each(rings, function (ringName, i) {
+  _.each(rings, function (ringObj, i) {
     if (i === maxRings) {
       throw new MalformedDataError(ExceptionMessages.TOO_MANY_RINGS)
     }
-    ringMap[ringName] = new Ring(ringName, i)
+    ringMap[ringObj.name] = new Ring({
+      name: ringObj.name,
+      order: i,
+      description: ringObj.description
+    })
   })
 
   var quadrants = {}
   _.each(blips, function (blip) {
     if (!quadrants[blip.quadrant]) {
-      quadrants[blip.quadrant] = new Quadrant(blip.quadrant[0].toUpperCase() + blip.quadrant.slice(1))
+      // Find the quadrant object by name
+      var quadrantObj = graphConfig.quadrants.find(q => q.name === blip.quadrant)
+      if (quadrantObj) {
+        quadrants[blip.quadrant] = new Quadrant({
+          name: quadrantObj.name,
+          description: quadrantObj.description
+        })
+      } else {
+        quadrants[blip.quadrant] = new Quadrant({ name: blip.quadrant, description: '' })
+      }
     }
     quadrants[blip.quadrant].add(
       new Blip(
@@ -99,13 +112,20 @@ const plotRadarGraph = function (title, blips, currentRadarName, alternativeRada
 
   d3.selectAll('.loading').remove()
 
-  const ringMap = graphConfig.rings.reduce((allRings, ring, index) => {
-    allRings[ring] = new Ring(ring, index)
+  const ringMap = graphConfig.rings.reduce((allRings, ringObj, index) => {
+    allRings[ringObj.name] = new Ring({
+      name: ringObj.name,
+      order: index,
+      description: ringObj.description
+    })
     return allRings
   }, {})
 
-  const quadrants = graphConfig.quadrants.reduce((allQuadrants, quadrant) => {
-    allQuadrants[quadrant] = new Quadrant(quadrant)
+  const quadrants = graphConfig.quadrants.reduce((allQuadrants, quadrantObj) => {
+    allQuadrants[quadrantObj.name] = new Quadrant({
+      name: quadrantObj.name,
+      description: quadrantObj.description
+    })
     return allQuadrants
   }, {})
 

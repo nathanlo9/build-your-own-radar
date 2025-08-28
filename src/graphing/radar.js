@@ -84,8 +84,20 @@ const Radar = function (size, radar) {
     var quadrantGroup = svg
       .append('g')
       .attr('class', 'quadrant-group quadrant-group-' + quadrant.order)
-      .on('mouseover', mouseoverQuadrant.bind({}, quadrant.order))
-      .on('mouseout', mouseoutQuadrant.bind({}, quadrant.order))
+      .attr('title', quadrant.quadrant && quadrant.quadrant.description ? quadrant.quadrant.description() : (quadrant.description ? quadrant.description() : ''))
+      .on('mouseover', function() {
+        mouseoverQuadrant.call(this, quadrant.order);
+        // Show d3-tip with description if available
+        if (quadrant.quadrant && quadrant.quadrant.description && quadrant.quadrant.description()) {
+          tip.show(quadrant.quadrant.description(), this);
+        } else if (quadrant.description && typeof quadrant.description === 'function' && quadrant.description()) {
+          tip.show(quadrant.description(), this);
+        }
+      })
+      .on('mouseout', function() {
+        mouseoutQuadrant.call(this, quadrant.order);
+        tip.hide();
+      })
       .on('click', selectQuadrant.bind({}, quadrant.order, quadrant.startAngle))
 
     rings.forEach(function (ring, i) {
@@ -108,6 +120,7 @@ const Radar = function (size, radar) {
 
   function plotTexts(quadrantGroup, rings, quadrant) {
     rings.forEach(function (ring, i) {
+      const ringDesc = ring.description ? (typeof ring.description === 'function' ? ring.description() : ring.description) : '';
       if (quadrant.order === 'first' || quadrant.order === 'fourth') {
         quadrantGroup
           .append('text')
@@ -116,6 +129,9 @@ const Radar = function (size, radar) {
           .attr('x', CENTER + (ringCalculator.getRadius(i) + ringCalculator.getRadius(i + 1)) / 2)
           .attr('text-anchor', 'middle')
           .text(ring.name())
+          .attr('title', ringDesc)
+          .on('mouseover', function() { if (ringDesc) tip.show(ringDesc, this); })
+          .on('mouseout', function() { tip.hide(); });
       } else {
         quadrantGroup
           .append('text')
@@ -124,6 +140,9 @@ const Radar = function (size, radar) {
           .attr('x', CENTER - (ringCalculator.getRadius(i) + ringCalculator.getRadius(i + 1)) / 2)
           .attr('text-anchor', 'middle')
           .text(ring.name())
+          .attr('title', ringDesc)
+          .on('mouseover', function() { if (ringDesc) tip.show(ringDesc, this); })
+          .on('mouseout', function() { tip.hide(); });
       }
     })
   }
@@ -571,6 +590,33 @@ const Radar = function (size, radar) {
     d3.selectAll('.blip-list__item-container__name').attr('aria-expanded', 'false')
 
     d3.selectAll(`.quadrant-group rect:nth-child(2n)`).attr('tabindex', 0)
+
+    // --- BEGIN: Show all Quadrant and Ring descriptions at the bottom of All quadrants tab ---
+    d3.select('#all-quadrants-descriptions').remove();
+    const descSection = d3.select('body')
+      .append('div')
+      .attr('id', 'all-quadrants-descriptions')
+      .style('margin', '40px auto 20px auto')
+      .style('max-width', '900px')
+      .style('padding', '24px')
+      .style('background', '#f8f8f8')
+      .style('border-radius', '8px')
+      .style('font-size', '1.1em');
+
+    descSection.append('h2').text('Quadrants');
+    const quadList = descSection.append('ul');
+    graphConfig.quadrants.forEach(q => {
+      quadList.append('li')
+        .html(`<b>${q.name}</b>: ${q.description}`);
+    });
+
+    descSection.append('h2').text('Rings');
+    const ringList = descSection.append('ul');
+    graphConfig.rings.forEach(r => {
+      ringList.append('li')
+        .html(`<b>${r.name}</b>: ${r.description}`);
+    });
+    // --- END: Show all Quadrant and Ring descriptions ---
   }
 
   function searchBlip(_e, ui) {

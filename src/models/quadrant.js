@@ -1,11 +1,14 @@
-const Quadrant = function (name) {
-  var self, blips
 
-  self = {}
-  blips = []
+const Quadrant = function ({ name, description }) {
+  var self = {}
+  var blips = []
 
   self.name = function () {
     return name
+  }
+
+  self.description = function () {
+    return description
   }
 
   self.add = function (newBlips) {

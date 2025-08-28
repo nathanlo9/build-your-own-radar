@@ -1,4 +1,5 @@
-const Ring = function (name, order) {
+
+const Ring = function ({ name, order, description }) {
   var self = {}
 
   self.name = function () {
@@ -7,6 +8,10 @@ const Ring = function (name, order) {
 
   self.order = function () {
     return order
+  }
+
+  self.description = function () {
+    return description
   }
 
   return self
