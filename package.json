@@ -13,7 +13,10 @@
     "test:e2e-headless": "cypress run --browser chrome --record false --env host=$TEST_URL",
     "lint-prettier:check": "eslint . && prettier --check .",
     "lint-prettier:fix": "eslint . --fix && prettier --write .",
-    "quality": "npm run lint-prettier:check && npm run test:coverage"
+    "quality": "npm run lint-prettier:check && npm run test:coverage",    
+    "container:build": "podman build -t localhost/byor-custom:latest .",
+    "container:run": "podman run --rm -p 8080:80 -v \"C:\\\\Users\\\\nlockard\\\\OneDrive - Church of Jesus Christ\\\\Documents:/opt/build-your-own-radar/files\" localhost/byor-custom:latest",
+    "container:publish": "npm run container:build && npm run container:run"
   },
   "author": "Thoughtworks",
   "repository": {
