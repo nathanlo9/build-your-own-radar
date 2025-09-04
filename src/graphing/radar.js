@@ -242,7 +242,7 @@ const Radar = function (size, radar) {
     return table.append('ul')
   }
 
-  function calculateBlipCoordinates(blip, chance, minRadius, maxRadius, startAngle) {
+  function calculateBlipCoordinates(blip, chance, minRadius, maxRadius, startAngle, quadrantOrder) {
     var adjustX = Math.sin(toRadian(startAngle)) - Math.cos(toRadian(startAngle))
     var adjustY = -Math.cos(toRadian(startAngle)) - Math.sin(toRadian(startAngle))
 
@@ -252,7 +252,9 @@ const Radar = function (size, radar) {
     })
     var angleDelta = (Math.asin(blip.width / 2 / radius) * 180) / (Math.PI - 1.25)
     angleDelta = angleDelta > 45 ? 45 : angleDelta
-    var angle = toRadian(chance.integer({ min: angleDelta, max: 90 - angleDelta }))
+    // Ensure angle is distributed correctly per quadrant
+    var quadrantStart = quadrantOrder * 90;
+    var angle = toRadian(quadrantStart + chance.integer({ min: angleDelta, max: 90 - angleDelta }))
 
     var x = CENTER + radius * Math.cos(angle) * adjustX
     var y = CENTER + radius * Math.sin(angle) * adjustY
@@ -284,7 +286,8 @@ const Radar = function (size, radar) {
     blips = quadrant.blips()
     rings.forEach(function (ring, i) {
       var ringBlips = blips.filter(function (blip) {
-        return blip.ring() === ring
+        // Compare ring names case-insensitively
+        return (blip.ring() && ring && blip.ring().toLowerCase() === ring.name().toLowerCase());
       })
 
       if (ringBlips.length === 0) {
@@ -593,7 +596,9 @@ const Radar = function (size, radar) {
 
     // --- BEGIN: Show all Quadrant and Ring descriptions at the bottom of All quadrants tab ---
     d3.select('#all-quadrants-descriptions').remove();
-    const descSection = d3.select('body')
+    // Append to main radar container for visibility
+    const radarContainer = d3.select('#radar-container').empty() ? d3.select('body') : d3.select('#radar-container');
+    const descSection = radarContainer
       .append('div')
       .attr('id', 'all-quadrants-descriptions')
       .style('margin', '40px auto 20px auto')
