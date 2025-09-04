@@ -360,19 +360,12 @@ const Factory = function () {
       sheet.init().build()
     } else {
       if (!featureToggles.UIRefresh2022) {
-        document.body.style.opacity = '1'
-        document.body.innerHTML = ''
-        const content = d3.select('body').append('div').attr('class', 'input-sheet')
-        plotLogo(content)
-        const bannerText =
-          '<div><h1>Build your own radar</h1><p>Once you\'ve <a href ="https://www.thoughtworks.com/radar/byor">created your Radar</a>, you can use this service' +
-          ' to generate an <br />interactive version of your Technology Radar. Not sure how? <a href ="https://www.thoughtworks.com/radar/byor">Read this first.</a></p></div>'
-
-        plotBanner(content, bannerText)
-
-        plotForm(content)
-
-        plotFooter(content)
+  document.body.style.opacity = '1'
+  document.body.innerHTML = ''
+  const content = d3.select('body').append('div').attr('class', 'input-sheet')
+  // Remove header/footer and logo
+  plotBanner(content, '<div><h1>Build your own radar</h1></div>')
+  plotForm(content)
       }
 
       setDocumentTitle()
@@ -408,25 +401,11 @@ function plotLoading(content) {
 }
 
 function plotLogo(content) {
-  content
-    .append('div')
-    .attr('class', 'input-sheet__logo')
-    .html('<a href="https://www.thoughtworks.com"><img src="/images/tw-logo.png" alt="logo"/ ></a>')
+  // Remove logo
 }
 
 function plotFooter(content) {
-  content
-    .append('div')
-    .attr('id', 'footer')
-    .append('div')
-    .attr('class', 'footer-content')
-    .append('p')
-    .html(
-      'Powered by <a href="https://www.thoughtworks.com"> Thoughtworks</a>. ' +
-        'By using this service you agree to <a href="https://www.thoughtworks.com/radar/tos">Thoughtworks\' terms of use</a>. ' +
-        'You also agree to our <a href="https://www.thoughtworks.com/privacy-policy">privacy policy</a>, which describes how we will gather, use and protect any personal data contained in your public Google Sheet. ' +
-        'This software is <a href="https://github.com/thoughtworks/build-your-own-radar">open source</a> and available for download and self-hosting.',
-    )
+  // Remove footer
 }
 
 function plotBanner(content, text) {
@@ -439,7 +418,7 @@ function plotForm(content) {
     .attr('class', 'input-sheet__form')
     .append('p')
     .html(
-      '<strong>Enter the URL of your <a href="https://www.thoughtworks.com/radar/byor" target="_blank">Google Sheet, CSV or JSON</a> file below…</strong>',
+      '<strong>Enter the URL of your Google Sheet, CSV or JSON file below…</strong>',
     )
 
   var form = content.select('.input-sheet__form').append('form').attr('method', 'get')
@@ -453,7 +432,7 @@ function plotForm(content) {
 
   form.append('button').attr('type', 'submit').append('a').attr('class', 'button').text('Build my radar')
 
-  form.append('p').html("<a href='https://www.thoughtworks.com/radar/byor#guide'>Need help?</a>")
+  form.append('p').html("")
 }
 
 function plotErrorMessage(exception, fileType) {
@@ -465,11 +444,7 @@ function plotErrorMessage(exception, fileType) {
 
     plotLogo(content)
 
-    const bannerText =
-      '<div><h1>Build your own radar</h1><p>Once you\'ve <a href ="https://www.thoughtworks.com/radar/byor">created your Radar</a>, you can use this service' +
-      ' to generate an <br />interactive version of your Technology Radar. Not sure how? <a href ="https://www.thoughtworks.com/radar/byor">Read this first.</a></p></div>'
-
-    plotBanner(content, bannerText)
+  plotBanner(content, '<div><h1>Build your own radar</h1></div>')
 
     d3.selectAll('.loading').remove()
     plotError(exception, fileType)
@@ -480,7 +455,7 @@ function plotErrorMessage(exception, fileType) {
 
 function plotError(exception, fileType) {
   let message
-  let faqMessage = 'Please check <a href="https://www.thoughtworks.com/radar/byor">FAQs</a> for possible solutions.'
+  let faqMessage = ''
   if (featureToggles.UIRefresh2022) {
     message = exception.message
     if (exception instanceof SheetNotFoundError) {
