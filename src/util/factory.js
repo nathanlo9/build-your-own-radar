@@ -53,19 +53,20 @@ const plotRadar = function (title, blips, currentRadarName, alternativeRadars) {
 
   var quadrants = {}
   _.each(blips, function (blip) {
-    if (!quadrants[blip.quadrant]) {
-      // Find the quadrant object by name
-      var quadrantObj = graphConfig.quadrants.find(q => q.name === blip.quadrant)
+    var blipQuadrantName = blip.quadrant ? blip.quadrant.toLowerCase() : '';
+    var quadrantObj = graphConfig.quadrants.find(q => q.name.toLowerCase() === blipQuadrantName);
+    var quadrantKey = quadrantObj ? quadrantObj.name : blip.quadrant;
+    if (!quadrants[quadrantKey]) {
       if (quadrantObj) {
-        quadrants[blip.quadrant] = new Quadrant({
+        quadrants[quadrantKey] = new Quadrant({
           name: quadrantObj.name,
           description: quadrantObj.description
-        })
+        });
       } else {
-        quadrants[blip.quadrant] = new Quadrant({ name: blip.quadrant, description: '' })
+        quadrants[quadrantKey] = new Quadrant({ name: blip.quadrant, description: '' });
       }
     }
-    quadrants[blip.quadrant].add(
+    quadrants[quadrantKey].add(
       new Blip(
         blip.name,
         ringMap[blip.ring],

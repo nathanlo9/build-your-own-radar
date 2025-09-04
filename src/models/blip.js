@@ -12,6 +12,14 @@ const Blip = function (name, ring, isNew, status, topic, description) {
     return name
   }
 
+  self.quadrant = function () {
+    return (typeof self._quadrant !== 'undefined') ? self._quadrant : '';
+  }
+
+  self.setQuadrant = function (quadrantName) {
+    self._quadrant = quadrantName;
+  }
+
   self.id = function () {
     return id || -1
   }
