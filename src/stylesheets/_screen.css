@@ -1,3 +1,29 @@
+/* Quadrant and Ring Descriptions Styles */
+.quadrant-ring-descriptions {
+  margin: 40px auto 20px auto;
+  max-width: 900px;
+  padding: 24px;
+  background: #f8f8f8;
+  border-radius: 8px;
+}
+.qr-section-title {
+  font-family: 'Inter', 'Bitter', Arial, sans-serif;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 12px;
+}
+.qr-section-list {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 1em;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  list-style: disc inside;
+}
+.qr-section-label {
+  font-weight: 600;
+  color: #222;
+}
 @charset "UTF-8";
 
 @media screen {
