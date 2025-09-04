@@ -200,7 +200,7 @@ describe('Blips', function () {
       isGroup: () => false,
       ring: () => {
         return {
-          name: () => 'Assess',
+          name: () => 'Trial',
         }
       },
       name: () => 'Some cool tech',
@@ -208,7 +208,7 @@ describe('Blips', function () {
     }
 
     const actual = blipAssistiveText(blip)
-    expect(actual).toEqual('Assess ring, Some cool tech, New.')
+    expect(actual).toEqual('Trial ring, Some cool tech, New.')
   })
 
   it('should return correct assistive text for existing blip', function () {
@@ -216,7 +216,7 @@ describe('Blips', function () {
       isGroup: () => false,
       ring: () => {
         return {
-          name: () => 'Assess',
+          name: () => 'Trial',
         }
       },
       name: () => 'Some cool tech',
@@ -224,7 +224,7 @@ describe('Blips', function () {
     }
 
     const actual = blipAssistiveText(blip)
-    expect(actual).toEqual('Assess ring, Some cool tech, No change.')
+    expect(actual).toEqual('Trial ring, Some cool tech, No change.')
   })
 
   it('should return correct assistive text for moved in blip', function () {
@@ -232,7 +232,7 @@ describe('Blips', function () {
       isGroup: () => false,
       ring: () => {
         return {
-          name: () => 'Assess',
+          name: () => 'Trial',
         }
       },
       name: () => 'Some cool tech',
@@ -240,7 +240,7 @@ describe('Blips', function () {
     }
 
     const actual = blipAssistiveText(blip)
-    expect(actual).toEqual('Assess ring, Some cool tech, Moved in.')
+    expect(actual).toEqual('Trial ring, Some cool tech, Moved in.')
   })
 
   it('should return correct assistive text for moved out blip', function () {
@@ -248,7 +248,7 @@ describe('Blips', function () {
       isGroup: () => false,
       ring: () => {
         return {
-          name: () => 'Assess',
+          name: () => 'Trial',
         }
       },
       name: () => 'Some cool tech',
@@ -256,7 +256,7 @@ describe('Blips', function () {
     }
 
     const actual = blipAssistiveText(blip)
-    expect(actual).toEqual('Assess ring, Some cool tech, Moved out.')
+    expect(actual).toEqual('Trial ring, Some cool tech, Moved out.')
   })
 
   it('should return group blip with appropriate values', function () {

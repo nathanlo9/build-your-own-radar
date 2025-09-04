@@ -38,13 +38,15 @@ describe('Quadrants', function () {
   })
 
   it('should render the text in two lines if length is above the max length', function () {
-  element.innerHTML = 'Solutions'
+    element.innerHTML = 'Languages & Frameworks'
     wrapQuadrantNameInMultiLine(mockedD3Element, false, quadrantGroup, tip)
     let expectedTSpanTags = element.querySelectorAll('tspan')
-    expect(expectedTSpanTags).toHaveLength(1)
-    expect(expectedTSpanTags[0].textContent).toEqual('Solutions')
-    expect(expectedTSpanTags[0].getAttribute('dy')).toBeNull()
-    })
+    expect(expectedTSpanTags).toHaveLength(2)
+    expect(expectedTSpanTags[0].textContent).toEqual('Languages & ')
+    expect(expectedTSpanTags[1].textContent).toEqual('Frameworks')
+    expect(expectedTSpanTags[0].getAttribute('dy')).toBe('-20')
+    expect(expectedTSpanTags[1].getAttribute('dy')).toBe('20')
+  })
 
   it('should split the first word by hyphen and render the text in two lines if its longer than max length', function () {
     element.innerHTML = 'Pneumonoultramicroscopic'

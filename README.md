@@ -27,7 +27,7 @@ Create a Google Sheet. Give it at least the below column headers, and put in the
 | Composer      | adopt  | tools                  | TRUE  | Although the idea of dependency management ...          |
 | Canary builds | trial  | techniques             | FALSE | Many projects have external code dependencies ...       |
 | Apache Kylin  | assess | platforms              | TRUE  | Apache Kylin is an open source analytics solution ...   |
-| JSF           | hold   | solutions | FALSE | We continue to see teams run into trouble using JSF ... |
+| JSF           | hold   | languages & frameworks | FALSE | We continue to see teams run into trouble using JSF ... |
 
 ### Want to show blip movement information?
 
@@ -66,7 +66,7 @@ name,ring,quadrant,isNew,description
 Composer,adopt,tools,TRUE,"Although the idea of dependency management ..."
 Canary builds,trial,techniques,FALSE,"Many projects have external code dependencies ..."
 Apache Kylin,assess,platforms,TRUE,"Apache Kylin is an open source analytics solution ..."
-JSF,hold,solutions,FALSE,"We continue to see teams run into trouble using JSF ..."
+JSF,hold,languages & frameworks,FALSE,"We continue to see teams run into trouble using JSF ..."
 ```
 
 If you do not want to host the CSV file publicly, you can follow [these steps](#advanced-option---docker-image-with-a-csvjson-file-from-the-host-machine) to host the file locally on your BYOR docker instance itself.
@@ -93,7 +93,7 @@ An example:
   },
   {
     "name": "Canary builds",
-    "ring": "contain",
+    "ring": "trial",
     "quadrant": "techniques",
     "isNew": "FALSE",
     "description": "Many projects have external code dependencies ..."
@@ -107,8 +107,8 @@ An example:
   },
   {
     "name": "JSF",
-    "ring": "end-of-life",
-  "quadrant": "solutions",
+    "ring": "hold",
+    "quadrant": "languages & frameworks",
     "isNew": "FALSE",
     "description": "We continue to see teams run into trouble using JSF ..."
   }
@@ -167,8 +167,8 @@ export ADOBE_LAUNCH_SCRIPT_URL=[Adobe Launch URL]
 To specify custom ring and/or quadrant names, add the following environment variables with the desired values.
 
 ```
-export RINGS='["Adopt", "Assess", "Contain", "End-of-Life"]'
-export QUADRANTS='["Techniques", "Platforms", "Tools", "Solutions"]'
+export RINGS='["Adopt", "Trial", "Assess", "Hold"]'
+export QUADRANTS='["Techniques", "Platforms", "Tools", "Languages & Frameworks"]'
 ```
 
 ## Docker Image

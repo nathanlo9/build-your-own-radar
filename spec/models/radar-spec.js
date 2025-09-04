@@ -156,10 +156,10 @@ describe('Radar', function () {
 
     beforeEach(function () {
       process.env.ENVIRONMENT = 'development'
-      firstRing = new Ring('end-of-life', 0)
-      secondRing = new Ring('adopt', 1)
-      thirdRing = new Ring('assess', 2)
-      fourthRing = new Ring('contain', 3)
+      firstRing = new Ring('hold', 0)
+      secondRing = new Ring('ADOPT', 1)
+      thirdRing = new Ring('TRiAl', 2)
+      fourthRing = new Ring('assess', 3)
       invalidRing = new Ring('invalid', 3)
       quadrant = new Quadrant('Fourth')
       otherQuadrant = new Quadrant('Other')
