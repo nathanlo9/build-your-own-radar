@@ -6511,7 +6511,7 @@ h2.heading__section small {
   background-color: rgba(30, 188, 205, 0.3);
   font-weight: 100;
 }
-.new-blip-marker.radar-movement.languages-and-frameworks {
+.new-blip-marker.radar-movement.solutions {
   color: #000;
   background-color: rgba(179, 32, 89, 0.3);
   font-weight: 100;
@@ -35741,7 +35741,7 @@ html:lang(cn) #responsive-tech-radar .heading__section {
   background-color: rgba(30, 188, 205, 0.3);
   font-weight: 100;
 }
-#responsive-tech-radar #quadrant-blip-list .radar-movement.languages-and-frameworks {
+#responsive-tech-radar #quadrant-blip-list .radar-movement.solutions {
   color: #000;
   background-color: rgba(179, 32, 89, 0.3);
   font-weight: 100;
@@ -35759,7 +35759,7 @@ html:lang(cn) #responsive-tech-radar .heading__section {
 #responsive-tech-radar .dot.techniques {
   color: #1ebccd;
 }
-#responsive-tech-radar .dot.languages-and-frameworks {
+#responsive-tech-radar .dot.solutions {
   color: #b32059;
 }
 #responsive-tech-radar .tooltip-icon {
@@ -36357,7 +36357,7 @@ html:lang(cn) #responsive-tech-radar .heading__section {
 .blip-quadrant-label.techniques {
   color: #1ebccd;
 }
-.blip-quadrant-label.languages-and-frameworks {
+.blip-quadrant-label.solutions {
   color: #b32059;
 }
 @media screen and (min-width: 600px) {
@@ -36497,7 +36497,7 @@ html:lang(cn) #responsive-tech-radar .heading__section {
 .infrastructure-as-code .dot.techniques {
   color: #1ebccd;
 }
-.infrastructure-as-code .dot.languages-and-frameworks {
+.infrastructure-as-code .dot.solutions {
   color: #b32059;
 }
 .blog-menu .insights-topic-navigation-header .back-navigation-grid {

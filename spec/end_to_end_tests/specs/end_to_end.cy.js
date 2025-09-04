@@ -119,7 +119,7 @@ describe('Build radar with CSV', () => {
       radarPage.clickQuadrantInFullRadarView('first')
       radarPage.triggerSearch('carbon lang')
       radarPage.clickSearchResult(1)
-      radarPage.validateActiveQuadrant('languages---frameworks', 'fourth')
+    radarPage.validateActiveQuadrant('solutions', 'fourth')
       radarPage.validateBlipDescriptionVibisbleInQuadrantTable(38)
     })
 

@@ -8,8 +8,8 @@
   },
   {
     "name": "Apache Kafka",
-    "ring": "trial",
-    "quadrant": "languages & frameworks",
+    "ring": "contain",
+  "quadrant": "solutions",
     "isNew": "FALSE",
     "description": "test"
   },
@@ -22,7 +22,7 @@
   },
   {
     "name": "GrapCloud lift and shifthQL",
-    "ring": "hold",
+    "ring": "end-of-life",
     "quadrant": "techniques",
     "isNew": "FALSE",
     "description": "test"
