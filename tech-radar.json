@@ -1,0 +1,775 @@
+{
+  "quadrants": [
+    {
+      "id": "techniques",
+      "name": "Techniques"
+    },
+    {
+      "id": "platforms",
+      "name": "Platforms"
+    },
+    {
+      "id": "tools",
+      "name": "Tools"
+    },
+    {
+      "id": "solutions",
+      "name": "Solutions"
+    }
+  ],
+  "rings": [
+    {
+      "id": "adopt",
+      "name": "Adopt"
+    },
+    {
+      "id": "assess",
+      "name": "Assess"
+    },
+    {
+      "id": "contain",
+      "name": "Contain"
+    },
+    {
+      "id": "end-of-life",
+      "name": "End-of-Life"
+    }
+  ],
+  "entries": [
+    {
+      "key": "data-product-thinking",
+      "title": "Data product thinking",
+      "quadrant": "techniques",
+      "ring": "adopt",
+      "isNew": false
+    },
+    {
+      "key": "fuzz-testing",
+      "title": "Fuzz testing",
+      "quadrant": "techniques",
+      "ring": "adopt",
+      "isNew": true
+    },
+    {
+      "key": "software-bill-of-materials",
+      "title": "Software Bill of Materials",
+      "quadrant": "techniques",
+      "ring": "adopt",
+      "isNew": false
+    },
+    {
+      "key": "threat-modeling",
+      "title": "Threat modeling",
+      "quadrant": "techniques",
+      "ring": "adopt",
+      "isNew": false
+    },
+    {
+      "key": "api-request-collection-as-api-product-artifact",
+      "title": "API request collection as API product artifact",
+      "quadrant": "techniques",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "architecture-advice-process",
+      "title": "Architecture advice process",
+      "quadrant": "techniques",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "graphrag",
+      "title": "GraphRAG",
+      "quadrant": "techniques",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "just-in-time-privileged-access-management",
+      "title": "Just-in-time privileged access management",
+      "quadrant": "techniques",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "model-distillation",
+      "title": "Model distillation",
+      "quadrant": "techniques",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "prompt-engineering",
+      "title": "Prompt engineering",
+      "quadrant": "techniques",
+      "ring": "contain",
+      "isNew": false
+    },
+    {
+      "key": "small-language-models",
+      "title": "Small language models",
+      "quadrant": "techniques",
+      "ring": "contain",
+      "isNew": false
+    },
+    {
+      "key": "using-genai-to-understand-legacy-codebases",
+      "title": "Using GenAI to understand legacy codebases",
+      "quadrant": "techniques",
+      "ring": "contain",
+      "isNew": false
+    },
+    {
+      "key": "ai-friendly-code-design",
+      "title": "AI-friendly code design",
+      "quadrant": "techniques",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "ai-powered-ui-testing",
+      "title": "AI-powered UI testing",
+      "quadrant": "techniques",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "competence-envelope-as-a-model-for-understanding-system-failures",
+      "title": "Competence envelope as a model for understanding system failures",
+      "quadrant": "techniques",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "structured-output-from-llms",
+      "title": "Structured output from LLMs",
+      "quadrant": "techniques",
+      "ring": "assess",
+      "isNew": false
+    },
+    {
+      "key": "ai-accelerated-shadow-it",
+      "title": "AI-accelerated shadow IT",
+      "quadrant": "techniques",
+      "ring": "end-of-life",
+      "isNew": true
+    },
+    {
+      "key": "complacency-with-ai-generated-code",
+      "title": "Complacency with AI-generated code",
+      "quadrant": "techniques",
+      "ring": "end-of-life",
+      "isNew": false
+    },
+    {
+      "key": "local-coding-assistants",
+      "title": "Local coding assistants",
+      "quadrant": "techniques",
+      "ring": "end-of-life",
+      "isNew": true
+    },
+    {
+      "key": "replacing-pair-programming-with-ai",
+      "title": "Replacing pair programming with AI",
+      "quadrant": "techniques",
+      "ring": "end-of-life",
+      "isNew": false
+    },
+    {
+      "key": "reverse-etl",
+      "title": "Reverse ETL",
+      "quadrant": "techniques",
+      "ring": "end-of-life",
+      "isNew": true
+    },
+    {
+      "key": "safe\u2122",
+      "title": "SAFe\u2122",
+      "quadrant": "techniques",
+      "ring": "end-of-life",
+      "isNew": false
+    },
+    {
+      "key": "gitlab-ci/cd",
+      "title": "GitLab CI/CD",
+      "quadrant": "platforms",
+      "ring": "adopt",
+      "isNew": false
+    },
+    {
+      "key": "trino",
+      "title": "Trino",
+      "quadrant": "platforms",
+      "ring": "adopt",
+      "isNew": false
+    },
+    {
+      "key": "absmartly",
+      "title": "ABsmartly",
+      "quadrant": "platforms",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "dapr",
+      "title": "Dapr",
+      "quadrant": "platforms",
+      "ring": "contain",
+      "isNew": false
+    },
+    {
+      "key": "grafana-alloy",
+      "title": "Grafana Alloy",
+      "quadrant": "platforms",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "grafana-loki",
+      "title": "Grafana Loki",
+      "quadrant": "platforms",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "grafana-tempo",
+      "title": "Grafana Tempo",
+      "quadrant": "platforms",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "railway",
+      "title": "Railway",
+      "quadrant": "platforms",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "unblocked",
+      "title": "Unblocked",
+      "quadrant": "platforms",
+      "ring": "contain",
+      "isNew": false
+    },
+    {
+      "key": "weights-&-biases",
+      "title": "Weights & Biases",
+      "quadrant": "platforms",
+      "ring": "contain",
+      "isNew": false
+    },
+    {
+      "key": "arize-phoenix",
+      "title": "Arize Phoenix",
+      "quadrant": "platforms",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "chainloop",
+      "title": "Chainloop",
+      "quadrant": "platforms",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "deepseek-r1",
+      "title": "Deepseek R1",
+      "quadrant": "platforms",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "deno",
+      "title": "Deno",
+      "quadrant": "platforms",
+      "ring": "assess",
+      "isNew": false
+    },
+    {
+      "key": "graphiti",
+      "title": "Graphiti",
+      "quadrant": "platforms",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "helicone",
+      "title": "Helicone",
+      "quadrant": "platforms",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "humanloop",
+      "title": "Humanloop",
+      "quadrant": "platforms",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "model-context-protocol-(mcp)",
+      "title": "Model Context Protocol (MCP)",
+      "quadrant": "platforms",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "open-webui",
+      "title": "Open WebUI",
+      "quadrant": "platforms",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "pg_mooncake",
+      "title": "pg_mooncake",
+      "quadrant": "platforms",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "reasoning-models",
+      "title": "Reasoning models",
+      "quadrant": "platforms",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "restate",
+      "title": "Restate",
+      "quadrant": "platforms",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "supabase",
+      "title": "Supabase",
+      "quadrant": "platforms",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "synthesized",
+      "title": "Synthesized",
+      "quadrant": "platforms",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "tonic.ai",
+      "title": "Tonic.ai",
+      "quadrant": "platforms",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "turbopuffer",
+      "title": "turbopuffer",
+      "quadrant": "platforms",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "vectorchord",
+      "title": "VectorChord",
+      "quadrant": "platforms",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "tyk-hybrid-api-management",
+      "title": "Tyk hybrid API management",
+      "quadrant": "platforms",
+      "ring": "end-of-life",
+      "isNew": true
+    },
+    {
+      "key": "renovate",
+      "title": "Renovate",
+      "quadrant": "tools",
+      "ring": "adopt",
+      "isNew": false
+    },
+    {
+      "key": "uv",
+      "title": "uv",
+      "quadrant": "tools",
+      "ring": "adopt",
+      "isNew": false
+    },
+    {
+      "key": "vite",
+      "title": "Vite",
+      "quadrant": "tools",
+      "ring": "adopt",
+      "isNew": false
+    },
+    {
+      "key": "claude-sonnet",
+      "title": "Claude Sonnet",
+      "quadrant": "tools",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "cline",
+      "title": "Cline",
+      "quadrant": "tools",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "cursor",
+      "title": "Cursor",
+      "quadrant": "tools",
+      "ring": "contain",
+      "isNew": false
+    },
+    {
+      "key": "d2",
+      "title": "D2",
+      "quadrant": "tools",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "databricks-delta-live-tables",
+      "title": "Databricks Delta Live Tables",
+      "quadrant": "tools",
+      "ring": "contain",
+      "isNew": false
+    },
+    {
+      "key": "json-crack",
+      "title": "JSON Crack",
+      "quadrant": "tools",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "mailslurp",
+      "title": "MailSlurp",
+      "quadrant": "tools",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "metabase",
+      "title": "Metabase",
+      "quadrant": "tools",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "nemo-guardrails",
+      "title": "NeMo Guardrails",
+      "quadrant": "tools",
+      "ring": "contain",
+      "isNew": false
+    },
+    {
+      "key": "nyx",
+      "title": "Nyx",
+      "quadrant": "tools",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "openrewrite",
+      "title": "OpenRewrite",
+      "quadrant": "tools",
+      "ring": "contain",
+      "isNew": false
+    },
+    {
+      "key": "plerion",
+      "title": "Plerion",
+      "quadrant": "tools",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "software-engineering-agents",
+      "title": "Software engineering agents",
+      "quadrant": "tools",
+      "ring": "contain",
+      "isNew": false
+    },
+    {
+      "key": "tuple",
+      "title": "Tuple",
+      "quadrant": "tools",
+      "ring": "contain",
+      "isNew": false
+    },
+    {
+      "key": "turborepo",
+      "title": "Turborepo",
+      "quadrant": "tools",
+      "ring": "contain",
+      "isNew": false
+    },
+    {
+      "key": "anythingllm",
+      "title": "AnythingLLM",
+      "quadrant": "tools",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "gemma-scope",
+      "title": "Gemma Scope",
+      "quadrant": "tools",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "hurl",
+      "title": "Hurl",
+      "quadrant": "tools",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "jujutsu",
+      "title": "Jujutsu",
+      "quadrant": "tools",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "kubenetmon",
+      "title": "kubenetmon",
+      "quadrant": "tools",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "mergiraf",
+      "title": "Mergiraf",
+      "quadrant": "tools",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "modernbert",
+      "title": "ModernBERT",
+      "quadrant": "tools",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "openrouter",
+      "title": "OpenRouter",
+      "quadrant": "tools",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "redactive",
+      "title": "Redactive",
+      "quadrant": "tools",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "system-initiative",
+      "title": "System Initiative",
+      "quadrant": "tools",
+      "ring": "assess",
+      "isNew": false
+    },
+    {
+      "key": "tabpfn",
+      "title": "TabPFN",
+      "quadrant": "tools",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "v0",
+      "title": "v0",
+      "quadrant": "tools",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "windsurf",
+      "title": "Windsurf",
+      "quadrant": "tools",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "yolo",
+      "title": "YOLO",
+      "quadrant": "tools",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "opentelemetry",
+      "title": "OpenTelemetry",
+      "quadrant": "solutions",
+      "ring": "adopt",
+      "isNew": false
+    },
+    {
+      "key": "react-hook-form",
+      "title": "React Hook Form",
+      "quadrant": "solutions",
+      "ring": "adopt",
+      "isNew": false
+    },
+    {
+      "key": "effect",
+      "title": "Effect",
+      "quadrant": "solutions",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "hasura-graphql-engine",
+      "title": "Hasura GraphQL engine",
+      "quadrant": "solutions",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "langgraph",
+      "title": "LangGraph",
+      "quadrant": "solutions",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "markitdown",
+      "title": "MarkItDown",
+      "quadrant": "solutions",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": "module-federation",
+      "title": "Module Federation",
+      "quadrant": "solutions",
+      "ring": "contain",
+      "isNew": false
+    },
+    {
+      "key": "prisma-orm",
+      "title": "Prisma ORM",
+      "quadrant": "solutions",
+      "ring": "contain",
+      "isNew": true
+    },
+    {
+      "key": ".net-aspire",
+      "title": ".NET Aspire",
+      "quadrant": "solutions",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "android-xr-sdk",
+      "title": "Android XR SDK",
+      "quadrant": "solutions",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "browser-use",
+      "title": "Browser Use",
+      "quadrant": "solutions",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "crewai",
+      "title": "CrewAI",
+      "quadrant": "solutions",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "elysiajs",
+      "title": "ElysiaJs",
+      "quadrant": "solutions",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "fastgraphrag",
+      "title": "FastGraphRAG",
+      "quadrant": "solutions",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "gleam",
+      "title": "Gleam",
+      "quadrant": "solutions",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "gofr",
+      "title": "GoFr",
+      "quadrant": "solutions",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "java-post-quantum-cryptography",
+      "title": "Java post-quantum cryptography",
+      "quadrant": "solutions",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "presidio",
+      "title": "Presidio",
+      "quadrant": "solutions",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "pydanticai",
+      "title": "PydanticAI",
+      "quadrant": "solutions",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "swift-for-resource-constrained-applications",
+      "title": "Swift for resource-constrained applications",
+      "quadrant": "solutions",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "tamagui",
+      "title": "Tamagui",
+      "quadrant": "solutions",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "torchtune",
+      "title": "torchtune",
+      "quadrant": "solutions",
+      "ring": "assess",
+      "isNew": true
+    },
+    {
+      "key": "node-overload",
+      "title": "Node overload",
+      "quadrant": "solutions",
+      "ring": "end-of-life",
+      "isNew": false
+    }
+  ]
+}
