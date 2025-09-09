@@ -236,7 +236,7 @@ const JSONFile = function () {
   var self = {}
 
   self.build = function () {
-    d3.json('/path/to/tech-radar.json')
+    d3.json('../../tech-radar.json') // Updated path
       .then(data => {
         const entries = data.entries;
         featureToggles.UIRefresh2022

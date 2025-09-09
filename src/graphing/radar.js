@@ -911,7 +911,7 @@ const Radar = function (size, radar) {
 module.exports = Radar
 
 const loadTechRadarData = async () => {
-  const response = await fetch('/path/to/tech-radar.json');
+  const response = await fetch('../../tech-radar.json'); // Updated path
   const data = await response.json();
 
   if (!data.entries || !Array.isArray(data.entries)) {
