@@ -913,8 +913,21 @@ module.exports = Radar
 const loadTechRadarData = async () => {
   const response = await fetch('/path/to/tech-radar.json');
   const data = await response.json();
+
+  if (!data.entries || !Array.isArray(data.entries)) {
+    throw new Error('Invalid JSON format: Missing or invalid entries node');
+  }
+
   return data.entries.map(entry => {
+    if (!entry.timeline || !Array.isArray(entry.timeline)) {
+      throw new Error('Invalid JSON format: Missing or invalid timeline in entry');
+    }
+
     const latestTimeline = entry.timeline[entry.timeline.length - 1];
+    if (!latestTimeline.ringId || latestTimeline.moved === undefined) {
+      throw new Error('Invalid JSON format: Missing required fields in timeline');
+    }
+
     return {
       ...entry,
       status: latestTimeline.moved === 0 ? 'no change' : latestTimeline.moved === 1 ? 'moved out' : 'moved in',

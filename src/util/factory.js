@@ -283,11 +283,18 @@ const JSONFile = function (url) {
 
   var createBlips = function (data) {
     try {
-      var columnNames = Object.keys(data[0])
+      // Extract the 'entries' node from the JSON data
+      if (!data.entries || !Array.isArray(data.entries)) {
+        throw new InvalidContentError(ExceptionMessages.INVALID_JSON_CONTENT)
+      }
+
+      var entries = data.entries
+      var columnNames = Object.keys(entries[0])
       var contentValidator = new ContentValidator(columnNames)
       contentValidator.verifyContent()
       contentValidator.verifyHeaders()
-      var blips = _.map(data, new InputSanitizer().sanitize)
+
+      var blips = _.map(entries, new InputSanitizer().sanitize)
       featureToggles.UIRefresh2022
         ? plotRadarGraph(FileName(url), blips, 'JSON File', [])
         : plotRadar(FileName(url), blips, 'JSON File', [])
