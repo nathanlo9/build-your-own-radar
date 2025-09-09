@@ -232,22 +232,21 @@ const GoogleSheet = function (sheetReference, sheetName) {
   return self
 }
 
-const techRadarData = require('../../tech-radar.json'); // Directly importing JSON file
-
 const JSONFile = function () {
   var self = {}
 
   self.build = function () {
-    try {
-      const data = techRadarData; // Using the imported JSON data
-      const entries = data.entries;
-      featureToggles.UIRefresh2022
-        ? plotRadarGraph('Tech Radar', entries, 'JSON File', [])
-        : plotRadar('Tech Radar', entries, 'JSON File', []);
-    } catch (exception) {
-      const fileNotFoundError = new FileNotFoundError(`Oops! We can't find the JSON file.`);
-      plotErrorMessage(featureToggles.UIRefresh2022 ? fileNotFoundError : exception, 'json');
-    }
+    d3.json('../../tech-radar.json') // Updated path
+      .then(data => {
+        const entries = data.entries;
+        featureToggles.UIRefresh2022
+          ? plotRadarGraph('Tech Radar', entries, 'JSON File', [])
+          : plotRadar('Tech Radar', entries, 'JSON File', []);
+      })
+      .catch((exception) => {
+        const fileNotFoundError = new FileNotFoundError(`Oops! We can't find the JSON file.`);
+        plotErrorMessage(featureToggles.UIRefresh2022 ? fileNotFoundError : exception, 'json');
+      });
   }
 
   return self;
