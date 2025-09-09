@@ -19,8 +19,8 @@ RUN if [ -f package-lock.json ]; then \
 # Copy source
 COPY . .
 
-# Install missing dependency
-RUN npm install copy-webpack-plugin --save-dev; \
+# Install missing dependency for build
+RUN npm install copy-webpack-plugin --save-dev;
 
 # Default to the script your repo already defines: "build:prod"
 # (You can override at build time with --build-arg BUILD_SCRIPT=build:dev)
