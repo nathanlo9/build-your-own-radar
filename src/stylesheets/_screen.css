@@ -1,3 +1,8 @@
+/* Ensure all-quadrants-descriptions is always below other content */
+#all-quadrants-descriptions {
+  position: relative;
+  z-index: 0;
+}
 /* Quadrant and Ring Descriptions Styles */
 .quadrant-ring-descriptions {
   margin: 40px auto 20px auto;
@@ -6,21 +11,21 @@
   background: #f8f8f8;
   border-radius: 8px;
 }
-.qr-section-title {
-  font-family: 'Inter', 'Bitter', Arial, sans-serif;
+#all-quadrants-descriptions .qr-section-title {
+  font-family: 'Inter', 'Bitter', Arial, sans-serif !important;
   font-weight: 700;
   color: #222;
   margin-bottom: 12px;
 }
-.qr-section-list {
-  font-family: 'Inter', Arial, sans-serif;
+#all-quadrants-descriptions .qr-section-list {
+  font-family: 'Inter', Arial, sans-serif !important;
   font-size: 1em;
   color: #333;
   line-height: 1.7;
   margin-bottom: 24px;
   list-style: disc inside;
 }
-.qr-section-label {
+#all-quadrants-descriptions .qr-section-label {
   font-weight: 600;
   color: #222;
 }

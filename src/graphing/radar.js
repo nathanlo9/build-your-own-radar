@@ -284,6 +284,11 @@ const Radar = function (size, radar) {
       .text(quadrant.name())
 
     blips = quadrant.blips()
+    rings.sort((a, b) => {
+      const order = ['End-of-Life', 'Contain', 'Assess', 'Adopt'];
+      return order.indexOf(a.name()) - order.indexOf(b.name());
+    });
+
     rings.forEach(function (ring, i) {
       var ringBlips = blips.filter(function (blip) {
         // Compare ring names case-insensitively
