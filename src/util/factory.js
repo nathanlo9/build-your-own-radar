@@ -232,7 +232,7 @@ const GoogleSheet = function (sheetReference, sheetName) {
   return self
 }
 
-const techRadarData = require('../../tech-radar.json'); // Directly importing JSON file
+const techRadarData = require('../static/tech-radar.json'); // Updated path to static folder
 
 const JSONFile = function () {
   var self = {}

@@ -910,7 +910,7 @@ const Radar = function (size, radar) {
 
 module.exports = Radar
 
-const techRadarData = require('../../tech-radar.json'); // Directly importing JSON file
+const techRadarData = require('../static/tech-radar.json'); // Updated path to static folder
 
 const loadTechRadarData = async () => {
   const data = techRadarData; // Using the imported JSON data
