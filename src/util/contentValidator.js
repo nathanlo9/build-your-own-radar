@@ -8,35 +8,37 @@ const _ = {
 const MalformedDataError = require('../../src/exceptions/malformedDataError')
 const ExceptionMessages = require('./exceptionMessages')
 
-const ContentValidator = function (columnNames) {
+const ContentValidator = function (jsonData) {
   var self = {}
-  columnNames = columnNames.map(function (columnName) {
-    return columnName.trim()
-  })
 
   self.verifyContent = function () {
-    if (columnNames.length === 0) {
+    if (!jsonData.entries || !Array.isArray(jsonData.entries)) {
       throw new MalformedDataError(ExceptionMessages.MISSING_CONTENT)
     }
   }
 
   self.verifyHeaders = function () {
-    // Check for the presence of the 'entries' node in the JSON structure
-    if (columnNames.indexOf('entries') === -1) {
-      throw new MalformedDataError(ExceptionMessages.MISSING_HEADERS)
-    }
+    // Validate fields within each entry in the 'entries' node
+    jsonData.entries.forEach(entry => {
+      ['title', 'description', 'quadrant', 'timeline', 'url', 'key'].forEach(field => {
+        if (!entry.hasOwnProperty(field)) {
+          throw new MalformedDataError(ExceptionMessages.MISSING_HEADERS)
+        }
+      })
 
-    // Validate fields within the 'entries' node
-    _.each(['timeline', 'ringId', 'moved'], function (field) {
-      if (columnNames.indexOf(field) === -1) {
+      // Validate fields within each timeline node
+      if (!Array.isArray(entry.timeline)) {
         throw new MalformedDataError(ExceptionMessages.MISSING_HEADERS)
       }
-    })
 
-    // At least one of isNew or status must be present
-    if (columnNames.indexOf('isNew') === -1 && columnNames.indexOf('status') === -1) {
-      throw new MalformedDataError(ExceptionMessages.MISSING_HEADERS)
-    }
+      entry.timeline.forEach(timeline => {
+        ['moved', 'ringId', 'date', 'description'].forEach(field => {
+          if (!timeline.hasOwnProperty(field)) {
+            throw new MalformedDataError(ExceptionMessages.MISSING_HEADERS)
+          }
+        })
+      })
+    })
   }
 
   return self
