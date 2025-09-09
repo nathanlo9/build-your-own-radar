@@ -8,16 +8,16 @@ const getQuadrants = () => {
       description: 'Technologies such as frameworks, libraries, and utilities used to build and operate systems.'
     },
     {
-      name: 'Techniques',
-      description: 'Practices, patterns, and methodologies that guide how work is done.'
+      name: 'Platforms',
+      description: 'Foundational environments or ecosystems that we build solutions on top of.'
     },
     {
       name: 'Solutions',
       description: 'Internally-developed systems and services.'
     },
     {
-      name: 'Platforms',
-      description: 'Foundational environments or ecosystems that we build solutions on top of.'
+      name: 'Techniques',
+      description: 'Practices, patterns, and methodologies that guide how work is done.'
     }
   ]
 }

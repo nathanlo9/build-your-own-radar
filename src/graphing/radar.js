@@ -665,6 +665,10 @@ const Radar = function (size, radar) {
   }
 
   function plotQuadrantButtons(quadrants) {
+    quadrants.sort((a, b) => {
+      const order = ['Tools', 'Platforms', 'Solutions', 'Techniques'];
+      return order.indexOf(a.name) - order.indexOf(b.name);
+    });
     function addButton(quadrant) {
       radarElement.append('div').attr('class', 'quadrant-table ' + quadrant.order)
 
