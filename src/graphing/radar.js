@@ -909,3 +909,34 @@ const Radar = function (size, radar) {
 }
 
 module.exports = Radar
+
+const loadTechRadarData = async () => {
+  const response = await fetch('/path/to/tech-radar.json');
+  const data = await response.json();
+  return data.entries.map(entry => {
+    const latestTimeline = entry.timeline[entry.timeline.length - 1];
+    return {
+      ...entry,
+      status: latestTimeline.moved === 0 ? 'no change' : latestTimeline.moved === 1 ? 'moved out' : 'moved in',
+      ring: latestTimeline.ringId,
+    };
+  });
+};
+
+const renderEntry = (entry) => {
+  const container = d3.select('#entries-container');
+  const entryDiv = container.append('div').attr('class', 'entry');
+
+  if (entry.url) {
+    entryDiv.append('a').attr('href', entry.url).text('Learn more');
+  }
+
+  entryDiv.append('p').html(entry.description);
+};
+
+const renderRadar = async () => {
+  const entries = await loadTechRadarData();
+  entries.forEach(renderEntry);
+};
+
+renderRadar();
