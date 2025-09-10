@@ -21,12 +21,6 @@ const ContentValidator = function (columnNames) {
   }
 
   self.verifyHeaders = function () {
-    // Check for the presence of the 'entries' node in the JSON structure
-    if (columnNames.indexOf('entries') === -1) {
-      throw new MalformedDataError(ExceptionMessages.MISSING_HEADERS)
-    }
-
-    // Validate fields within the 'entries' node
     _.each(['name', 'ring', 'quadrant', 'description'], function (field) {
       if (columnNames.indexOf(field) === -1) {
         throw new MalformedDataError(ExceptionMessages.MISSING_HEADERS)
