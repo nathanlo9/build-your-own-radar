@@ -386,35 +386,21 @@ function plotForm(content) {
     .attr('class', 'input-sheet__form')
     .append('p')
     .html(
-      '<strong>Enter the URL of your JSON file below…</strong>',
-    );
+      '<strong>Enter the URL of your Google Sheet, CSV or JSON file below…</strong>',
+    )
 
-  var form = content.select('.input-sheet__form').append('form').attr('method', 'get');
+  var form = content.select('.input-sheet__form').append('form').attr('method', 'get')
 
   form
     .append('input')
     .attr('type', 'text')
-    .attr('name', 'documentId')
-    .attr('placeholder', 'e.g. https://example.com/tech-radar.json')
-    .attr('required', '');
+    .attr('name', 'sheetId')
+    .attr('placeholder', 'e.g. https://docs.google.com/spreadsheets/d/<sheetid> or hosted CSV/JSON file')
+    .attr('required', '')
 
-  form.append('button').attr('type', 'submit').append('a').attr('class', 'button').text('Build my radar');
+  form.append('button').attr('type', 'submit').append('a').attr('class', 'button').text('Build my radar')
 
-  form.append('p').html('');
-}
-
-async function loadAndProcessJson(url) {
-  const response = await fetch(url);
-  const data = await response.json();
-
-  return data.entries.map(entry => {
-    const latestTimeline = entry.timeline[entry.timeline.length - 1];
-    return {
-      ...entry,
-      status: latestTimeline.moved === 0 ? 'no change' : latestTimeline.moved === 1 ? 'moved out' : 'moved in',
-      ring: latestTimeline.ringId,
-    };
-  });
+  form.append('p').html("")
 }
 
 function plotErrorMessage(exception, fileType) {
