@@ -23,20 +23,20 @@
   ],
   "quadrants": [
     {
-      "id": "tools",
-      "name": "Tools"
+      "id": "techniques",
+      "name": "Techniques"
     },
     {
       "id": "platforms",
       "name": "Platforms"
     },
     {
-      "id": "solutions",
-      "name": "Solutions"
+      "id": "tools",
+      "name": "Tools"
     },
     {
-      "id": "techniques",
-      "name": "Techniques"
+      "id": "solutions",
+      "name": "Solutions"
     }
   ],
   "entries": [

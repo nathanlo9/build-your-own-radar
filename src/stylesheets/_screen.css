@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* Ensure all-quadrants-descriptions is always below other content */
 #all-quadrants-descriptions {
   position: relative;
@@ -30,6 +29,7 @@
   font-weight: 600;
   color: #222;
 }
+@charset "UTF-8";
 
 @media screen {
 .tooltipster-default .tooltipster-content {
