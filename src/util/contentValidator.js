@@ -8,37 +8,35 @@ const _ = {
 const MalformedDataError = require('../../src/exceptions/malformedDataError')
 const ExceptionMessages = require('./exceptionMessages')
 
-const ContentValidator = function (jsonData) {
+const ContentValidator = function (columnNames) {
   var self = {}
+  columnNames = columnNames.map(function (columnName) {
+    return columnName.trim()
+  })
 
   self.verifyContent = function () {
-    if (!jsonData.entries || !Array.isArray(jsonData.entries)) {
+    if (columnNames.length === 0) {
       throw new MalformedDataError(ExceptionMessages.MISSING_CONTENT)
     }
   }
 
   self.verifyHeaders = function () {
-    // Validate fields within each entry in the 'entries' node
-    jsonData.entries.forEach(entry => {
-      ['title', 'description', 'quadrant', 'timeline', 'url', 'key'].forEach(field => {
-        if (!entry.hasOwnProperty(field)) {
-          throw new MalformedDataError(ExceptionMessages.MISSING_HEADERS)
-        }
-      })
+    // Check for the presence of the 'entries' node in the JSON structure
+    if (columnNames.indexOf('entries') === -1) {
+      throw new MalformedDataError(ExceptionMessages.MISSING_HEADERS)
+    }
 
-      // Validate fields within each timeline node
-      if (!Array.isArray(entry.timeline)) {
+    // Validate fields within the 'entries' node
+    _.each(['timeline', 'ringId', 'moved'], function (field) {
+      if (columnNames.indexOf(field) === -1) {
         throw new MalformedDataError(ExceptionMessages.MISSING_HEADERS)
       }
-
-      entry.timeline.forEach(timeline => {
-        ['moved', 'ringId', 'date', 'description'].forEach(field => {
-          if (!timeline.hasOwnProperty(field)) {
-            throw new MalformedDataError(ExceptionMessages.MISSING_HEADERS)
-          }
-        })
-      })
     })
+
+    // At least one of isNew or status must be present
+    if (columnNames.indexOf('isNew') === -1 && columnNames.indexOf('status') === -1) {
+      throw new MalformedDataError(ExceptionMessages.MISSING_HEADERS)
+    }
   }
 
   return self
