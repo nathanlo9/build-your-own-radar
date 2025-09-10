@@ -232,30 +232,69 @@ const GoogleSheet = function (sheetReference, sheetName) {
   return self
 }
 
-const JSONFile = function () {
+const CSVDocument = function (url) {
   var self = {}
 
   self.build = function () {
-    d3.json('http://localhost:8080/files/tech-radar.json')
-      .then(data => {
-        const entries = data.entries;
-        featureToggles.UIRefresh2022
-          ? plotRadarGraph('Tech Radar', entries, 'JSON File', [])
-          : plotRadar('Tech Radar', entries, 'JSON File', []);
-      })
+    d3.csv(url)
+      .then(createBlips)
       .catch((exception) => {
-        const fileNotFoundError = new FileNotFoundError(`Oops! We can't find the JSON file.`);
-        plotErrorMessage(featureToggles.UIRefresh2022 ? fileNotFoundError : exception, 'json');
-      });
+        const fileNotFoundError = new FileNotFoundError(`Oops! We can't find the CSV file you've entered`)
+        plotErrorMessage(featureToggles.UIRefresh2022 ? fileNotFoundError : exception, 'csv')
+      })
   }
 
   var createBlips = function (data) {
     try {
-      var columnNames = Object.keys(data[0])
+      var columnNames = data.columns
+      delete data.columns
       var contentValidator = new ContentValidator(columnNames)
       contentValidator.verifyContent()
       contentValidator.verifyHeaders()
       var blips = _.map(data, new InputSanitizer().sanitize)
+      featureToggles.UIRefresh2022
+        ? plotRadarGraph(FileName(url), blips, 'CSV File', [])
+        : plotRadar(FileName(url), blips, 'CSV File', [])
+    } catch (exception) {
+      const invalidContentError = new InvalidContentError(ExceptionMessages.INVALID_CSV_CONTENT)
+      plotErrorMessage(featureToggles.UIRefresh2022 ? invalidContentError : exception, 'csv')
+    }
+  }
+
+  self.init = function () {
+    plotLoading()
+    return self
+  }
+
+  return self
+}
+
+const JSONFile = function (url) {
+  var self = {}
+
+  self.build = function () {
+    d3.json(url)
+      .then(createBlips)
+      .catch((exception) => {
+        const fileNotFoundError = new FileNotFoundError(`Oops! We can't find the JSON file you've entered`)
+        plotErrorMessage(featureToggles.UIRefresh2022 ? fileNotFoundError : exception, 'json')
+      })
+  }
+
+  var createBlips = function (data) {
+    try {
+      // Extract the 'entries' node from the JSON data
+      if (!data.entries || !Array.isArray(data.entries)) {
+        throw new InvalidContentError(ExceptionMessages.INVALID_JSON_CONTENT)
+      }
+
+      var entries = data.entries
+      var columnNames = Object.keys(entries[0])
+      var contentValidator = new ContentValidator(columnNames)
+      contentValidator.verifyContent()
+      contentValidator.verifyHeaders()
+
+      var blips = _.map(entries, new InputSanitizer().sanitize)
       featureToggles.UIRefresh2022
         ? plotRadarGraph(FileName(url), blips, 'JSON File', [])
         : plotRadar(FileName(url), blips, 'JSON File', [])
