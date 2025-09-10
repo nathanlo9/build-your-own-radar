@@ -27,7 +27,7 @@ const ContentValidator = function (columnNames) {
     }
 
     // Validate fields within the 'entries' node
-    _.each(['timeline', 'ringId', 'moved'], function (field) {
+    _.each(['name', 'ring', 'quadrant', 'description'], function (field) {
       if (columnNames.indexOf(field) === -1) {
         throw new MalformedDataError(ExceptionMessages.MISSING_HEADERS)
       }

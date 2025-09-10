@@ -249,7 +249,28 @@ const JSONFile = function () {
       });
   }
 
-  return self;
+  var createBlips = function (data) {
+    try {
+      var columnNames = Object.keys(data[0])
+      var contentValidator = new ContentValidator(columnNames)
+      contentValidator.verifyContent()
+      contentValidator.verifyHeaders()
+      var blips = _.map(data, new InputSanitizer().sanitize)
+      featureToggles.UIRefresh2022
+        ? plotRadarGraph(FileName(url), blips, 'JSON File', [])
+        : plotRadar(FileName(url), blips, 'JSON File', [])
+    } catch (exception) {
+      const invalidContentError = new InvalidContentError(ExceptionMessages.INVALID_JSON_CONTENT)
+      plotErrorMessage(featureToggles.UIRefresh2022 ? invalidContentError : exception, 'json')
+    }
+  }
+
+  self.init = function () {
+    plotLoading()
+    return self
+  }
+
+  return self
 }
 
 const DomainName = function (url) {
