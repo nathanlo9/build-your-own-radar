@@ -12,7 +12,7 @@ const getQuadrants = () => {
       description: 'Foundational environments or ecosystems that we build solutions on top of.'
     },
     {
-      name: 'Solutions',
+      name: 'Internal Solutions',
       description: 'Internally-developed systems and services.'
     },
     {
