@@ -601,16 +601,13 @@ const Radar = function (size, radar) {
 
     // --- BEGIN: Show all Quadrant and Ring descriptions at the bottom of All quadrants tab ---
     d3.select('#all-quadrants-descriptions').remove();
-    // Append to main radar container for visibility
-    const radarContainer = d3.select('#radar-container').empty() ? d3.select('body') : d3.select('#radar-container');
+    // Append into <main> so the descriptions remain in document flow (acts like a footer section)
+    const radarContainer = d3.select('main').empty() ? (d3.select('#radar-container').empty() ? d3.select('body') : d3.select('#radar-container')) : d3.select('main');
     const descSection = radarContainer
       .append('div')
       .attr('id', 'all-quadrants-descriptions')
-      .style('margin', '40px auto 20px auto')
-      .style('max-width', '900px')
-      .style('padding', '24px')
-      .style('background', '#f8f8f8')
-      .style('border-radius', '8px')
+      .classed('quadrant-ring-descriptions in-flow-footer', true)
+      // avoid inline positioning/styles that can conflict with other layout rules
       .style('font-size', '1.1em');
 
     descSection.append('h2').text('Quadrants');

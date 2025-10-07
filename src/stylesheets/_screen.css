@@ -1,7 +1,28 @@
 /* Ensure all-quadrants-descriptions is always below other content */
+/* Ensure the descriptions section is in document flow and sits below other content */
 #all-quadrants-descriptions {
   position: relative;
   z-index: 0;
+  box-sizing: border-box;
+  clear: both; /* ensure it moves below floated/absolute elements */
+}
+
+/* When inserted by JS as an in-flow footer, give it footer-like spacing and full width */
+.in-flow-footer {
+  display: block;
+  width: 100%;
+  margin: 40px auto 20px auto;
+  max-width: 900px;
+  padding: 24px;
+  background: #f8f8f8;
+  border-radius: 8px;
+}
+
+/* Show page once fonts ready (guards against FOIT). The base.scss sets body opacity to 0 for UIRefresh2022; this ensures it becomes visible when fonts-loaded is present. */
+:root .fonts-loaded body,
+html.fonts-loaded body,
+body.fonts-loaded {
+  opacity: 1 !important;
 }
 /* Quadrant and Ring Descriptions Styles */
 .quadrant-ring-descriptions {

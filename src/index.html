@@ -5,13 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/images/favicon.ico" rel="icon" />
     <link rel="preconnect" href="https://rsms.me/" />
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" integrity="sha512-byor" crossorigin="anonymous" />
+    <!-- Preload Inter stylesheet and swap to stylesheet on load to avoid blocking render and improve reliability -->
+    <link rel="preload" href="https://rsms.me/inter/inter.css" as="style" onload="this.rel='stylesheet'" />
+    <noscript>
+      <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    </noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@700&display=swap" rel="stylesheet" />
   </head>
 
   <body>
+    <script>
+      // Ensure the page shows once fonts are ready. Fallback to timeout in case Font Loading API is not available.
+      (function () {
+        var timeout = setTimeout(function () {
+          document.documentElement.classList.add('fonts-loaded');
+        }, 3000);
+
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(function () {
+            clearTimeout(timeout);
+            document.documentElement.classList.add('fonts-loaded');
+          }).catch(function () {
+            // On error, still reveal page after timeout
+            clearTimeout(timeout);
+            document.documentElement.classList.add('fonts-loaded');
+          });
+        }
+      })();
+    </script>
   <!-- Header/logo removed -->
     <div class="hero-banner">
       <div class="hero-banner__wrapper">
